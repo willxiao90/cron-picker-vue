@@ -1,13 +1,42 @@
 {
   "name": "cron-picker-vue",
-  "version": "0.1.0",
-  "private": true,
+  "description": "模仿阿里云的 Cron 表达式选择组件",
+  "version": "1.0.0",
+  "private": false,
+  "main": "dist/CronPicker.umd.min.js",
+  "files": [
+    "dist"
+  ],
+  "author": "willxiao90",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:willxiao90/cron-picker-vue.git"
+  },
+  "keywords": [
+    "cron",
+    "picker",
+    "vue",
+    "maker",
+    "generator",
+    "editor",
+    "ui"
+  ],
+  "homepage": "https://github.com/willxiao90/cron-picker-vue#readme",
+  "bugs": {
+    "url": "https://github.com/willxiao90/cron-picker-vue/issues"
+  },
+  "directories": {
+    "example": "example"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vue-cli-service serve example/main.js",
+    "build-example": "vue-cli-service build example/main.js --dest docs",
+    "build": "vue-cli-service build --target lib --name CronPicker src/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
     "vue": "^2.6.11"
   },
   "devDependencies": {

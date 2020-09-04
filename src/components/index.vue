@@ -79,7 +79,7 @@ export default {
     interval: {
       handler: function(newVal, oldVal) {
         // console.log(newVal, oldVal)
-        this.type = newVal
+        this.type = newVal || 'minute'
       },
       immediate: true
     },
@@ -88,7 +88,7 @@ export default {
         // console.log(newVal, oldVal)
         if (newVal.length > 0) {
           this.$nextTick(() => {
-            this.$refs.picker.init(newVal)
+            this.$refs.picker.init(newVal || '')
           })
         }
       },

@@ -1,12 +1,8 @@
 # cron-picker-vue
 
-模仿阿里云的 Cron 表达式选择组件
+模仿阿里云的 Cron 表达式选择组件，支持分钟、小时、天、周、月几种常见的 case。
 
-![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshot.png)
-
----
-
-![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshot2.png)
+![](https://willxiao90.github.io/cron-picker-vue/snapshot.png)
 
 ### Demo
 
@@ -21,7 +17,7 @@
 npm install cron-picker-vue
 ```
 
-### 使用
+### 示例
 ``` vue
 <template>
   <div id="app">
@@ -72,7 +68,7 @@ cron | Cron 表达式 | string | - | ''
 ### 事件
 
 事件名称 | 说明 | 参数
----|---|---|---
+---|---|---
 change | interval 或 cron 改变会触发 | {interval: string, cron: string}
 
 ### 注意

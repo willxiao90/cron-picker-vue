@@ -86,9 +86,9 @@ export default {
     cron: {
       handler: function(newVal, oldVal) {
         // console.log(newVal, oldVal)
-        if (newVal.length > 0) {
+        if (newVal) {
           this.$nextTick(() => {
-            this.$refs.picker.init(newVal || '')
+            this.$refs.picker.init(newVal)
           })
         }
       },

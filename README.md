@@ -2,22 +2,24 @@
 
 模仿阿里云的 Cron 表达式选择组件
 
-![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshort.png)
+![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshot.png)
 
-## Demo
+![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshot2.png)
 
-[](https://willxiao90.github.io/cron-picker-vue/)
+### Demo
 
-## 依赖
+[https://willxiao90.github.io/cron-picker-vue/](https://willxiao90.github.io/cron-picker-vue/)
+
+### 依赖
 - Vue 2.0.0+
 - element-ui 2.0.0+
 
-## 安装
+### 安装
 ```
 npm install cron-picker-vue
 ```
 
-## 使用
+### 使用
 ``` vue
 <template>
   <div id="app">
@@ -58,19 +60,19 @@ export default {
 </script>
 ```
 
-## 属性
+### 属性
 
 属性名称 | 说明 | 类型 | 可选值 | 默认值
 ---|---|---|---|---
 interval | 周期 | string | minute / hour / day / week / month | minute
 cron | Cron 表达式 | string | - | '' 
 
-## 事件
+### 事件
 
 事件名称 | 说明 | 参数
 ---|---|---|---|---
 change | interval 或 cron 改变会触发 | {interval: string, cron: string}
 
-## 注意
+### 注意
 
-当使用 ui 选择调度周期时，一定会返回正确的 cron 表达式。但是当手动编辑 cron 表达式的时候，ui 不一定能准确表达，因为 ui 只考虑一些常见的情况，特殊情况 ui 无法表达。比如 interval 为分钟，cron 表达式为 10 */5 1-23 * * ?，ui 会正确显示分钟和小时，但是秒就无法展示。
+当使用 ui 选择调度周期时，一定会返回正确的 cron 表达式。但是当手动编辑 cron 表达式时，ui 不一定能准确表达，因为 ui 只考虑一些常见的情况，特殊情况 ui 可能无法表达。比如 interval 为分钟，cron 表达式为 10 */5 1-23 * * ?，ui 会正确显示分钟和小时，但是秒就无法展示。

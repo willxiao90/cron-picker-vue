@@ -1,7 +1,7 @@
 {
   "name": "cron-picker-vue",
   "description": "模仿阿里云的 Cron 表达式选择组件",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "main": "dist/CronPicker.umd.min.js",
   "files": [

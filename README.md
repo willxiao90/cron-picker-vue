@@ -4,6 +4,8 @@
 
 ![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshot.png)
 
+---
+
 ![](https://raw.githubusercontent.com/willxiao90/cron-picker-vue/master/public/snapshot2.png)
 
 ### Demo
@@ -64,13 +66,13 @@ export default {
 
 属性名称 | 说明 | 类型 | 可选值 | 默认值
 ---|---|---|---|---
-interval | 周期 | string | minute / hour / day / week / month | minute
+interval | 调度周期 | string | minute / hour / day / week / month | minute
 cron | Cron 表达式 | string | - | '' 
 
 ### 事件
 
 事件名称 | 说明 | 参数
----|---|---|---|---
+---|---|---|---
 change | interval 或 cron 改变会触发 | {interval: string, cron: string}
 
 ### 注意

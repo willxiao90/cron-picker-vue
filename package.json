@@ -30,9 +30,10 @@
     "example": "example"
   },
   "scripts": {
-    "serve": "vue-cli-service serve example/main.js",
-    "build-example": "vue-cli-service build example/main.js --dest docs",
-    "build": "vue-cli-service build --target lib --name CronPicker src/index.js"
+    "serve": "vue-cli-service serve",
+    "build-example": "vue-cli-service build --dest docs",
+    "build": "vue-cli-service build --target lib --name CronPicker src/index.js",
+    "npm": "npm run build && npm version patch && npm publish && git push --tags"
   },
   "dependencies": {
     "core-js": "^3.6.5",

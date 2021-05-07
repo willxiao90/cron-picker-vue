@@ -43,7 +43,7 @@ export default {
   name: 'CronWeek',
   data() {
     return {
-      weeks: [2],
+      weeks: [1],
       hour: 0,
       minute: 0
     }
@@ -52,25 +52,25 @@ export default {
     weekOptions() {
       return [{
         value: 1,
-        label: '周日'
-      }, {
-        value: 2,
         label: '周一'
       }, {
-        value: 3,
+        value: 2,
         label: '周二'
       }, {
-        value: 4,
+        value: 3,
         label: '周三'
       }, {
-        value: 5,
+        value: 4,
         label: '周四'
       }, {
-        value: 6,
+        value: 5,
         label: '周五'
       }, {
-        value: 7,
+        value: 6,
         label: '周六'
+      }, {
+        value: 7,
+        label: '周日'
       }]
     },
     hourOptions() {
@@ -115,8 +115,12 @@ export default {
       const tempArr = value.split(' ')
       this.minute = Number(tempArr[1])
       this.hour = Number(tempArr[2])
-      const weekArr = tempArr[5].split(',')
-      this.weeks = weekArr.filter(v => v !== '').map(v => Number(v))
+      if(tempArr[5] === '*'){
+        this.weeks = []
+      }else{
+        const weekArr = tempArr[5].split(',')
+        this.weeks = weekArr.filter(v => v !== '').map(v => Number(v))
+      }
     },
     emitChange() {
       this.$emit('change', this.cronExp)

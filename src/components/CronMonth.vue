@@ -95,8 +95,12 @@ export default {
       const tempArr = value.split(' ')
       this.minute = Number(tempArr[1])
       this.hour = Number(tempArr[2])
-      const dayArr = tempArr[3].split(',')
-      this.days = dayArr.filter(v => v !== '').map(v => Number(v))
+      if(tempArr[3] === '*'){
+        this.days = []
+      }else{
+        const dayArr = tempArr[3].split(',')
+        this.days = dayArr.filter(v => v !== '').map(v => Number(v))
+      }
     },
     emitChange() {
       this.$emit('change', this.cronExp)

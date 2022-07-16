@@ -1,7 +1,12 @@
 <template>
   <div>
-    <div>
-      <el-select v-model="hourBegin" size="mini" style="width: 65px" @change="emitChange()">
+    <div class="cron-picker-row">
+      <el-select
+        v-model="hourBegin"
+        size="mini"
+        style="width: 65px"
+        @change="emitChange()"
+      >
         <el-option
           v-for="item in hourOptions"
           :key="item.value"
@@ -16,7 +21,12 @@
 
       <span style="margin: 0 5px">到</span>
 
-      <el-select v-model="hourEnd" size="mini" style="width: 65px" @change="emitChange()">
+      <el-select
+        v-model="hourEnd"
+        size="mini"
+        style="width: 65px"
+        @change="emitChange()"
+      >
         <el-option
           v-for="item in hourOptions"
           :key="item.value"
@@ -30,9 +40,14 @@
       </el-select>
     </div>
 
-    <div>
+    <div class="cron-picker-row">
       每
-      <el-select v-model="perHour" size="mini" style="width: 65px" @change="emitChange()">
+      <el-select
+        v-model="perHour"
+        size="mini"
+        style="width: 65px"
+        @change="emitChange()"
+      >
         <el-option
           v-for="item in hourOptions2"
           :key="item"
@@ -41,7 +56,12 @@
         />
       </el-select>
       小时，分钟
-      <el-select v-model="minute" size="mini" style="width: 65px" @change="emitChange()">
+      <el-select
+        v-model="minute"
+        size="mini"
+        style="width: 65px"
+        @change="emitChange()"
+      >
         <el-option
           v-for="item in minuteOptions"
           :key="item.value"
@@ -55,16 +75,15 @@
 </template>
 
 <script>
-
 export default {
-  name: 'CronHour',
+  name: "CronHour",
   data() {
     return {
       hourBegin: 0,
       hourEnd: 23,
       perHour: 1,
-      minute: 0
-    }
+      minute: 0,
+    };
   },
   computed: {
     hourOptions() {
@@ -72,57 +91,55 @@ export default {
         if (i < 10) {
           return {
             value: i,
-            label: '0' + i
-          }
+            label: "0" + i,
+          };
         } else {
           return {
             value: i,
-            label: i
-          }
+            label: i,
+          };
         }
-      })
+      });
     },
     hourOptions2() {
-      return Array.from(Array(12), (_, i) => i + 1)
+      return Array.from(Array(12), (_, i) => i + 1);
     },
     minuteOptions() {
       return Array.from(Array(60), (_, i) => {
         if (i < 10) {
           return {
             value: i,
-            label: '0' + i
-          }
+            label: "0" + i,
+          };
         } else {
           return {
             value: i,
-            label: i
-          }
+            label: i,
+          };
         }
-      })
+      });
     },
     cronExp() {
-      return `0 ${this.minute} ${this.hourBegin}-${this.hourEnd}/${this.perHour} * * ?`
-    }
+      return `0 ${this.minute} ${this.hourBegin}-${this.hourEnd}/${this.perHour} * * ?`;
+    },
   },
   methods: {
-    init(value) {
-      const tempArr = value.split(' ')
-      this.minute = Number(tempArr[1])
-      const hourArr = tempArr[2].split('/')
-      this.perHour = Number(hourArr[1])
-      const hourArr2 = hourArr[0].split('-')
-      this.hourBegin = Number(hourArr2[0])
-      this.hourEnd = Number(hourArr2[1])
-    },
     emitChange() {
-      this.$emit('change', this.cronExp)
-    }
-  }
-}
+      this.$emit("change", this.cronExp);
+    },
+    reset() {
+      this.hourBegin = 0;
+      this.hourEnd = 23;
+      this.perHour = 1;
+      this.minute = 0;
+      this.emitChange();
+    },
+  },
+};
 </script>
 
 <style scoped>
-.divider{
-  color: #949AA6;
+.divider {
+  color: #949aa6;
 }
 </style>

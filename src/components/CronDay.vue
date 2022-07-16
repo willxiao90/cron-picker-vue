@@ -1,9 +1,14 @@
 <template>
   <div>
     <div>
-      <div>
-        小时
-        <el-select v-model="hours" multiple size="mini" style="width: 350px" @change="emitChange()">
+      <div class="cron-picker-row">
+        <el-select
+          v-model="hours"
+          multiple
+          size="mini"
+          style="width: 280px"
+          @change="emitChange()"
+        >
           <el-option
             v-for="item in hourOptions"
             :key="item.value"
@@ -11,11 +16,17 @@
             :value="item.value"
           />
         </el-select>
+        小时，
       </div>
 
-      <div>
+      <div class="cron-picker-row">
         分钟
-        <el-select v-model="minute" size="mini" style="width: 65px" @change="emitChange()">
+        <el-select
+          v-model="minute"
+          size="mini"
+          style="width: 65px"
+          @change="emitChange()"
+        >
           <el-option
             v-for="item in minuteOptions"
             :key="item.value"
@@ -30,14 +41,13 @@
 </template>
 
 <script>
-
 export default {
-  name: 'CronDay',
+  name: "CronDay",
   data() {
     return {
       hours: [0],
-      minute: 0
-    }
+      minute: 0,
+    };
   },
   computed: {
     hourOptions() {
@@ -45,56 +55,49 @@ export default {
         if (i < 10) {
           return {
             value: i,
-            label: '0' + i
-          }
+            label: "0" + i,
+          };
         } else {
           return {
             value: i,
-            label: i
-          }
+            label: i,
+          };
         }
-      })
+      });
     },
     minuteOptions() {
       return Array.from(Array(60), (_, i) => {
         if (i < 10) {
           return {
             value: i,
-            label: '0' + i
-          }
+            label: "0" + i,
+          };
         } else {
           return {
             value: i,
-            label: i
-          }
+            label: i,
+          };
         }
-      })
+      });
     },
     cronExp() {
       if (this.hours.length === 0) {
-        return `0 ${this.minute} * * * ?`
+        return `0 ${this.minute} * * * ?`;
       }
-      return `0 ${this.minute} ${this.hours.join(',')} * * ?`
-    }
+      return `0 ${this.minute} ${this.hours.join(",")} * * ?`;
+    },
   },
   methods: {
-    init(value) {
-      const tempArr = value.split(' ')
-      this.minute = Number(tempArr[1])
-      if(tempArr[2] === '*'){
-        this.hours = []
-      }else{
-        const hourArr = tempArr[2].split(',')
-      this.hours = hourArr.filter(v => v !== '').map(v => Number(v))
-      }
-    },
     emitChange() {
-      this.$emit('change', this.cronExp)
-    }
-  }
-}
+      this.$emit("change", this.cronExp);
+    },
+    reset() {
+      this.hours = [0];
+      this.minute = 0;
+      this.emitChange();
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,44 +1,44 @@
 <template>
   <div id="app">
-    <el-form  label-width="120px">
-      <el-form-item label="调度周期">
-        <cron-picker :interval="interval" :cron="cron" @change="onChange" />
-      </el-form-item>
-      <el-form-item label="Cron 表达式">
-        <el-input v-model="cron" placeholder="请输入 Cron 表达式" />
-      </el-form-item>
-      <el-form-item label="">
-        <el-alert
-        title="当使用 ui 选择调度周期时，一定会返回正确的 cron 表达式。但是当手动编辑 cron 表达式时，ui 不一定能准确表达，因为 ui 只考虑一些常见的情况，特殊情况 ui 可能无法表达。比如调度周期为分钟，cron 表达式为 10 */5 1-23 * * ?，ui 会正确显示分钟和小时，但是秒就无法展示。"
-        type="warning">
-      </el-alert>
-      </el-form-item>
-    </el-form>
+    <el-popover v-model="popoverVisible" width="480">
+      <cron-picker @change="onChange" @close="close()" />
+      <el-input
+        slot="reference"
+        v-model="cron"
+        placeholder="Cron 表达式"
+        style="width: 500px"
+      />
+    </el-popover>
   </div>
 </template>
 
 <script>
-import CronPicker from '../src/components/index.vue'
+import CronPicker from "../src/components/index.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    CronPicker
+    CronPicker,
   },
-  data(){
+  data() {
     return {
-      interval: 'minute',
-      cron: ''
-    }
+      popoverVisible: false, // 是否显示 popover 提示框
+      cron: "", // Cron 表达式
+    };
   },
   methods: {
-    onChange(res) {
-      console.log(res)
-      this.interval = res.interval
-      this.cron = res.cron
+    // change 事件会返回新的 cron 表达式
+    onChange(cron) {
+      console.log(cron);
+      this.cron = cron;
+      this.close();
     },
-  }
-}
+    // 关闭 popover 提示框
+    close() {
+      this.popoverVisible = false;
+    },
+  },
+};
 </script>
 
 <style>
@@ -47,6 +47,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  width: 50%;
+  padding: 30px;
 }
 </style>

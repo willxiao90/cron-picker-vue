@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="cron-picker-row">
+      <div class="cron-picker__row">
         <el-select
           v-model="hours"
           multiple
@@ -19,7 +19,7 @@
         小时，
       </div>
 
-      <div class="cron-picker-row">
+      <div class="cron-picker__row">
         分钟
         <el-select
           v-model="minute"
@@ -87,6 +87,9 @@ export default {
       return `0 ${this.minute} ${this.hours.join(",")} * * ?`;
     },
   },
+  mounted() {
+    this.emitChange();
+  },
   methods: {
     emitChange() {
       this.$emit("change", this.cronExp);
@@ -94,10 +97,9 @@ export default {
     reset() {
       this.hours = [0];
       this.minute = 0;
+
       this.emitChange();
     },
   },
 };
 </script>
-
-<style scoped></style>

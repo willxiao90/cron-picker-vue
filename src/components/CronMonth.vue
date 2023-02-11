@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cron-picker-row">
+    <div class="cron-picker__row">
       <el-select
         v-model="days"
         multiple
@@ -18,7 +18,7 @@
       日，
     </div>
 
-    <div class="cron-picker-row">
+    <div class="cron-picker__row">
       小时
       <el-select
         v-model="hour"
@@ -103,6 +103,9 @@ export default {
       return `0 ${this.minute} ${this.hour} ${this.days.join(",")} * ?`;
     },
   },
+  mounted() {
+    this.emitChange();
+  },
   methods: {
     emitChange() {
       this.$emit("change", this.cronExp);
@@ -111,10 +114,9 @@ export default {
       this.days = [1];
       this.hour = 0;
       this.minute = 0;
+
       this.emitChange();
     },
   },
 };
 </script>
-
-<style scoped></style>

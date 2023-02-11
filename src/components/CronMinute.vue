@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cron-picker-row">
+    <div class="cron-picker__row">
       <el-select
         v-model="hourBegin"
         size="mini"
@@ -14,7 +14,7 @@
           :value="item.value"
         />
       </el-select>
-      <span class="divider">:</span>
+      <span class="cron-picker__divider">:</span>
       <el-select value="00" size="mini" style="width: 65px" disabled>
         <el-option value="00" label="00" />
       </el-select>
@@ -34,13 +34,13 @@
           :value="item.value"
         />
       </el-select>
-      <span class="divider">:</span>
+      <span class="cron-picker__divider">:</span>
       <el-select value="59" size="mini" style="width: 65px" disabled>
         <el-option value="59" label="59" />
       </el-select>
     </div>
 
-    <div class="cron-picker-row">
+    <div class="cron-picker__row">
       每
       <el-select
         v-model="perMinute"
@@ -93,6 +93,9 @@ export default {
       return `0 */${this.perMinute} ${this.hourBegin}-${this.hourEnd} * * ?`;
     },
   },
+  mounted() {
+    this.emitChange();
+  },
   methods: {
     emitChange() {
       this.$emit("change", this.cronExp);
@@ -101,14 +104,9 @@ export default {
       this.hourBegin = 0;
       this.hourEnd = 23;
       this.perMinute = 5;
+
       this.emitChange();
     },
   },
 };
 </script>
-
-<style scoped>
-.divider {
-  color: #949aa6;
-}
-</style>

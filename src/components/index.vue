@@ -6,12 +6,7 @@
       </div>
       <div class="form-item">
         <div>
-          <el-select
-            v-model="type"
-            size="mini"
-            style="width: 75px"
-            @change="onTypeChange"
-          >
+          <el-select v-model="type" size="mini" style="width: 75px">
             <el-option
               v-for="item in typeOptions"
               :key="item.value"
@@ -37,11 +32,6 @@
           disabled
         ></el-input>
       </div>
-    </div>
-
-    <div class="footer">
-      <el-button type="primary" size="small" @click="confirm()">保存</el-button>
-      <el-button type="default" size="small" @click="close()">关闭</el-button>
     </div>
   </div>
 </template>
@@ -96,25 +86,12 @@ export default {
     },
   },
   methods: {
-    onTypeChange(type) {
-      this.$nextTick(() => {
-        const cron = this.$refs.picker.cronExp;
-        // console.log(type, cron)
-        this.cron = cron;
-      });
-    },
     onChange(cron) {
       this.cron = cron;
-    },
-    confirm() {
       this.$emit("change", this.cron);
-
-      this.$nextTick(() => {
-        this.$refs.picker.reset();
-      });
     },
-    close() {
-      this.$emit("close");
+    reset() {
+      this.$refs.picker.reset();
     },
   },
 };
@@ -122,11 +99,16 @@ export default {
 
 <style>
 .cron-picker {
-  width: 400px;
+  min-width: 400px;
 }
 
-.cron-picker-row {
+.cron-picker__row {
   margin-top: 10px;
+}
+
+.cron-picker__divider {
+  color: #949aa6;
+  margin: 0 2px;
 }
 </style>
 
@@ -143,10 +125,5 @@ export default {
 
 .form-item {
   flex: 1;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
 }
 </style>

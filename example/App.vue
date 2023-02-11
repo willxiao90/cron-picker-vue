@@ -1,13 +1,25 @@
 <template>
   <div id="app">
     <el-popover v-model="popoverVisible" width="480">
-      <cron-picker @change="onChange" @close="close()" />
       <el-input
         slot="reference"
-        v-model="cron"
+        v-model="inputValue"
         placeholder="Cron 表达式"
         style="width: 500px"
       />
+
+      <div>
+        <cron-picker ref="picker" @change="onChange" />
+
+        <div class="actions">
+          <el-button type="primary" size="small" @click="confirm()"
+            >确定</el-button
+          >
+          <el-button type="default" size="small" @click="close()"
+            >关闭</el-button
+          >
+        </div>
+      </div>
     </el-popover>
   </div>
 </template>
@@ -22,20 +34,23 @@ export default {
   },
   data() {
     return {
-      popoverVisible: false, // 是否显示 popover 提示框
+      popoverVisible: false, // 是否显示 popover
+      inputValue: "", // 输入框的值
       cron: "", // Cron 表达式
     };
   },
   methods: {
-    // change 事件会返回新的 cron 表达式
     onChange(cron) {
-      console.log(cron);
+      console.log({ cron });
       this.cron = cron;
-      this.close();
     },
-    // 关闭 popover 提示框
     close() {
       this.popoverVisible = false;
+    },
+    confirm() {
+      this.inputValue = this.cron;
+      this.$refs.picker.reset();
+      this.close();
     },
   },
 };
@@ -43,10 +58,11 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   padding: 30px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
 }
 </style>

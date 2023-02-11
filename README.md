@@ -2,7 +2,7 @@
 
 模仿阿里云的 Cron 表达式选择组件，支持几种常见的调度周期 case。
 
-![](https://willxiao90.github.io/cron-picker-vue/snapshot2.png)
+![](https://willxiao90.github.io/cron-picker-vue/snapshot3.png)
 
 ### Demo
 

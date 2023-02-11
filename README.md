@@ -89,4 +89,4 @@ export default {
 
 ### 实例方法
 
-reset() 将 Cron 表达式重置为默认值
+reset() // 将 Cron 表达式重置为默认值

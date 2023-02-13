@@ -131,9 +131,6 @@ export default {
       return `0 ${this.minute} ${this.hour} ? * ${this.weeks.join(",")}`;
     },
   },
-  mounted() {
-    this.emitChange();
-  },
   methods: {
     emitChange() {
       this.$emit("change", this.cronExp);
@@ -145,6 +142,9 @@ export default {
 
       this.emitChange();
     },
+  },
+  mounted() {
+    this.emitChange();
   },
 };
 </script>

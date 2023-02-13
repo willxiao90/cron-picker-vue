@@ -93,9 +93,6 @@ export default {
       return `0 */${this.perMinute} ${this.hourBegin}-${this.hourEnd} * * ?`;
     },
   },
-  mounted() {
-    this.emitChange();
-  },
   methods: {
     emitChange() {
       this.$emit("change", this.cronExp);
@@ -107,6 +104,9 @@ export default {
 
       this.emitChange();
     },
+  },
+  mounted() {
+    this.emitChange();
   },
 };
 </script>

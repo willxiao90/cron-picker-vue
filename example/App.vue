@@ -26,6 +26,7 @@
 
 <script>
 import CronPicker from "../src/components/index.vue";
+import "cron-picker-vue/dist/CronPicker.css";
 
 export default {
   name: "App",

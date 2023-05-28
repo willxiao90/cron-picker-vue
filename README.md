@@ -50,6 +50,7 @@ npm install cron-picker-vue
 
 <script>
 import CronPicker from "cron-picker-vue";
+import "cron-picker-vue/dist/CronPicker.css";
 
 export default {
   name: "App",

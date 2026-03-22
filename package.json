@@ -1,9 +1,9 @@
 {
   "name": "cron-picker-vue",
   "description": "模仿阿里云的 Cron 表达式选择组件",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": false,
-  "main": "dist/CronPicker.umd.min.js",
+  "main": "dist/CronPicker.umd.js",
   "files": [
     "dist"
   ],
@@ -32,7 +32,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build-example": "vue-cli-service build --dest docs",
-    "build": "vue-cli-service build --target lib --name CronPicker src/index.js",
+    "build": "vue-cli-service build --target lib --name CronPicker --formats umd src/index.js",
     "pub": "npm run build && npm version patch && npm publish"
   },
   "dependencies": {

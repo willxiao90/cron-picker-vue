@@ -39,7 +39,7 @@
     "core-js": "^3.6.5"
   },
   "peerDependencies": {
-    "vue": "^2.6.11",
+    "vue": "^2.5.7",
     "element-ui": "^2.13.2"
   },
   "devDependencies": {
